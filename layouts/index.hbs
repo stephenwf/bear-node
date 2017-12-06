@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html class="blog-index">
+{{> html-header }}  <!-- A partial - this will be explained in the next section! -->
+
+<body>
+    {{> header }} <!-- A partial - this will be explained in the next section! -->
+
+    <div id="main">
+        <div class="container">
+
+            <ul class="blog-list">
+                {{#each collections.notes}} <!-- A Handlebars iterative function. -->
+                    {{#if title}} <!-- If a post has a title element, it will be listed. -->
+                      <div class="humongous {{#unless cover-img}}no-cover{{/unless}}" {{#if cover-img}}style="background-image: {{cover-img}};"{{/if}}><!-- Two handlebars helpers that test for a background-image in each humongous element. -->
+                        <img src="./assets/img/vector-scroll-top.png" alt="" class="grayscale">
+                          <a href="./{{ slug }}.html"><h1 class="hello">{{title}}</h1></a> <!-- Slug is a property of each document's metadata, called front-matter. See the section on front matter below. -->
+                          <span class="datetime"><time>{{posted}}</time></span>
+                          <img src="./assets/img/vector-scroll-bottom.png" alt="" class="grayscale">
+                      </div>
+                    {{/if}}
+                {{/each}}
+            </ul>
+
+        </div>
+    </div>
+</body>
+</html>
